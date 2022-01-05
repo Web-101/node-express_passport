@@ -5,6 +5,13 @@ import 'dotenv/config';
 import express from 'express';
 import expressLayouts from 'express-ejs-layouts';
 import path from 'path';
+import mongoose from 'mongoose';
+
+// db config
+mongoose
+    .connect(process.env.DB_URI as string)
+    .then(() => console.log('DB Connected'))
+    .catch(err => console.log(err));
 
 // import files
 import index from './routes/index';
