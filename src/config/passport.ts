@@ -1,6 +1,5 @@
 // import libs
 import passport_local from 'passport-local';
-import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
 
 // load user model
