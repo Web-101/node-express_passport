@@ -6,6 +6,8 @@ import express from 'express';
 import expressLayouts from 'express-ejs-layouts';
 import path from 'path';
 import mongoose from 'mongoose';
+import flash from 'connect-flash';
+import session from 'express-session';
 
 // db config
 mongoose
@@ -27,6 +29,17 @@ app.set('view engine', 'ejs');
 
 // body parser
 app.use(express.urlencoded({ extended: false }));
+
+// express session
+app.use(
+    session({
+        secret: 'secret',
+        resave: true,
+        saveUninitialized: true
+}));
+
+// connect flash
+app.use(flash());
 
 // routes
 app.use('/', index);
