@@ -77,7 +77,7 @@ router.post("/register", (req, res) => {
             newUser
               .save()
               .then(() => res.redirect("/users/login"))
-              .catch((err: any) => console.log(err));
+              .catch((err: any) => console.log(err)); 
           });
         });
       }
