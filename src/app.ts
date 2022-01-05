@@ -8,16 +8,20 @@ import path from "path";
 import mongoose from "mongoose";
 import flash from "connect-flash";
 import session from "express-session";
+import passport from "passport";
+
+// import files
+import index from "./routes/index";
+import users from "./routes/users";
+import localPassport from "./config/passport";
+
+localPassport(passport);
 
 // db config
 mongoose
   .connect(process.env.DB_URI as string)
   .then(() => console.log("DB Connected"))
   .catch((err) => console.log(err));
-
-// import files
-import index from "./routes/index";
-import users from "./routes/users";
 
 const app: express.Application = express();
 const PORT = process.env.PORT || 5000;
@@ -39,6 +43,10 @@ app.use(
   })
 );
 
+// initialize passport
+app.use(passport.initialize());
+app.use(passport.session());
+
 // connect flash
 app.use(flash());
 
@@ -46,6 +54,7 @@ app.use(flash());
 app.use((req, res, next) => {
   res.locals.success_msg = req.flash("success_msg");
   res.locals.error_msg = req.flash("error_msg");
+  res.locals.error = req.flash("error");
   next();
 });
 
