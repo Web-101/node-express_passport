@@ -4,6 +4,7 @@
     "@types/connect-flash": "^0.0.37",
     "@types/express-ejs-layouts": "^2.5.0",
     "@types/express-session": "^1.17.4",
+    "@types/passport-local": "^1.0.34",
     "git-commit-msg-linter": "^3.2.8",
     "nodemon": "^2.0.15",
     "ts-node": "^10.4.0",
