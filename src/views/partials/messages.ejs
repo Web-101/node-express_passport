@@ -25,3 +25,12 @@
 		</button>
 	</div>
 	<% } %>
+
+	<% if (error != '') { %>
+		<div class="alert alert-warning alert-dismissible fade show" role="alert">
+			<%= error %>
+			<button type="button" class="close btn btn-lg px-1 py-0 text-warning" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<% } %>
