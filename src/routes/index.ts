@@ -1,5 +1,7 @@
 import express from "express";
 
+import ensureAuthenticated from "../config/auth";
+
 const router = express.Router();
 
 // home page
@@ -8,8 +10,8 @@ router.get("/", (req, res) => {
 });
 
 // dashboard
-router.get("/dashboard", (req, res) => {
+router.get("/dashboard", ensureAuthenticated, (req, res) => {
   res.render("dashboard");
-})
+});
 
 export default router;
